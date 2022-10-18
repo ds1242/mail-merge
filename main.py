@@ -11,14 +11,16 @@ PLACEHOLDER = "[name]"
 
 
 with open("./Input/Names/invited_names.txt", "r") as names_file:
-    names = names_file.readLines()
+    names = names_file.readlines()
 
 # print(f.readlines())
 with open("./Input/Letters/starting_letter.txt") as starting_letter:
     letter_contents = starting_letter.read()
     for name in names:
-        new_name = name.strip('\n')
+        new_name = name.strip()
         new_letter = letter_contents.replace(PLACEHOLDER, new_name)
+        with open(f"./Output/ReadyToSend/letter_for_{new_name}.txt", mode="w") as completed_letter:
+            completed_letter.write(new_letter)
 
 
 
